@@ -27,7 +27,7 @@ local function tostring (self)
 end
 
 local function isChildOf(self, parent)
-  checkSelf(self, "isChildOf")
+  checkSelf(self, "is[Subclass/Instance]Of")
 
   if self.class == parent then
     return true
@@ -71,8 +71,11 @@ lowerclass.new = function (name, super)
   end
 
   local class = {
-    name = name, super    = super,    isChildOf  = isChildOf,
-    new  = new,  subclass = subclass, __tostring = tostring
+    new = new, name = name,
+    super = super, subclass = subclass,
+    isSubclassOf = isChildOf, isInstanceOf = isChildOf,
+
+    __tostring = tostring
   }
 
   --class.subclasses = {}

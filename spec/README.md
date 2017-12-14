@@ -28,14 +28,11 @@ The following changes have been made to the spec:
 
 `default_methods_spec.lua`
 * Disabled `Class:allocate` tests since it's not implemented
-* Renamed `Class:isInstanceOf` to `Class:isChildOf`
-* Renamed `Class:isSubclassOf` to `Class:isChildOf`
 
 `metamethods_spec.lua`
 * Metamethods can't be inherited (applies to `metamethods_lua_5_2.lua` and `metamethods_lua_5_3.lua` too)
 * Disabled `Class:__index` tests since it's not implemented
 * Disabled Functions tests (for `__index` and `__newindex`) since `Class:__index` is not implemented
-* Renamed `Class:isInstanceOf` to `Class:isChildOf`
 
 ## License
 

@@ -306,7 +306,7 @@ describe('Metamethods', function()
 
     describe('A Class', function()
       it('has a call metamethod properly set', function()
-        assert.is_true(peter:isChildOf(Peter))
+        assert.is_true(peter:isInstanceOf(Peter))
       end)
       it('has a tostring metamethod properly set', function()
         assert.equal(tostring(Peter), 'class Peter')

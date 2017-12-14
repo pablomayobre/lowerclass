@@ -18,7 +18,6 @@ While taking into account the next few differences:
 - `__index` metamethod is not supported, changing it may create errors.
 - `allocate` is not part of the class, instead a [private function](https://github.com/Positive07/lowerclass/blob/master/lowerclass.lua#L39L48) is used.
 - Mixins are not supported so `include` is not supported.
-- `isInstanceOf` and `isSubclassOf` are merged into `isChildOf` since they would use the same codepath anyway.
 - `Child.subclasses` are currently [commented out](https://github.com/Positive07/lowerclass/blob/master/lowerclass.lua#L78L81) to keep the simplicity, they could easily be added.
 - Metamethods are not inherited (Issue #1)
 
@@ -32,8 +31,9 @@ local class = require 'middleclass'
 
 ## More
 
-Check the `spec` folder for info on the spec
-Check the `performance` folder for info on the performance tests
+Check the `spec` folder for info on the spec.
+
+Check the `performance` folder for info on the performance tests.
 
 ## License
 
