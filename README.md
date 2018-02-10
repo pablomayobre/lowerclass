@@ -26,7 +26,7 @@ While taking into account the next few differences:
 Just copy the `lowerclass.lua` file wherever you want it (for example on a lib/ folder). Then write this in any Lua file where you want to use it:
 
 ```lua
-local class = require 'middleclass'
+local class = require 'lowerclass'
 ```
 
 ## More
