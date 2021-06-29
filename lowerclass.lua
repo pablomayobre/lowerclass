@@ -5,6 +5,9 @@ local lowerclass = {
   _LICENSE     = "MIT LICENSE - Copyright (c) 2017 Pablo. Mayobre (Positive07)"
 }
 
+lowerclass.__TRACK_SUBCLASSES = false
+lowerclass.__COPY_METAMETHODS = false
+
 --Typechecking
 local INVALIDSELF = "Make sure that you are using 'Class:%s' instead of 'Class.%s'"
 local function checkSelf(self, func)
@@ -63,6 +66,13 @@ local function mt (parent)
   return { __index = parent, __call = call, __tostring = tostring }
 end
 
+local METAMETHODS = {
+  '__newindex', '__mode', '__call', '__metatable', '__tostring', '__len', '__pairs', '__ipairs', '__gc', '__name', '__close',
+  '__unm', '__add', '__sub', '__mul', '__div', '__idiv', '__mod', '__pow', '__concat',
+  '__band', '__bor', '__bxor', '__bnot', '__shl', '__shr',
+  '__eq', '__lt', '__le'
+}
+
 --Main function
 lowerclass.new = function (name, super)
   checkName(name)
@@ -78,10 +88,18 @@ lowerclass.new = function (name, super)
     __tostring = tostring
   }
 
-  --class.subclasses = {}
-  --if super and super.subclasses then
-  --  super.subclasses[class] = true
-  --end
+  if lowerclass.__TRACK_SUBCLASSES then
+    class.subclasses = {}
+    if super and super.subclasses then
+      super.subclasses[class] = true
+    end
+  end
+  
+  if lowerclass.__COPY_METAMETHODS and super then
+    for _, method in ipairs(METAMETHODS) do
+      class[method] = super[method]
+    end
+  end
 
   class.class   = class
   class.__index = class
